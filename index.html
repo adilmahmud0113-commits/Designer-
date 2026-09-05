@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StyleHub - Men's Fashion</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f5f7;
+      color: #171717;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 25px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 28px;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      color: #bbb;
+      margin-top: 8px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #222, #555);
+      color: white;
+      padding: 30px 20px;
+      border-radius: 20px;
+      margin-bottom: 25px;
+    }
+
+    .hero h2 {
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+
+    .hero button {
+      background: white;
+      color: #111;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 25px;
+      margin-top: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .categories {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      margin-bottom: 25px;
+    }
+
+    .categories button {
+      padding: 10px 18px;
+      border: 1px solid #ddd;
+      background: white;
+      border-radius: 25px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .categories button.active {
+      background: #111;
+      color: white;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .section-title h2 {
+      font-size: 22px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 12px;
+    }
+
+    .card h3 {
+      font-size: 16px;
+      margin-bottom: 7px;
+    }
+
+    .card p {
+      color: #777;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .buy-btn {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      border: none;
+      background: #111;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .buy-btn:hover {
+      background: #333;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #777;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>STYLEHUB</h1>
+    <p>Modern Men's Fashion</p>
+  </header>
+
+  <div class="container">
+
+    <section class="hero">
+      <h2>Dress Your Style</h2>
+      <p>Discover stylish outfits for every occasion.</p>
+      <button onclick="showMessage()">Explore Collection</button>
+    </section>
+
+    <div class="categories">
+      <button class="active" onclick="filterProducts('all', this)">All</button>
+      <button onclick="filterProducts('kurta', this)">Kurta</button>
+      <button onclick="filterProducts('shirt', this)">Shirts</button>
+      <button onclick="filterProducts('formal', this)">Formal</button>
+    </div>
+
+    <div class="section-title">
+      <h2>Featured Designs</h2>
+      <span>✨</span>
+    </div>
+
+    <div class="products">
+
+      <div class="card" data-category="kurta">
+        <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=500" alt="Stylish kurta">
+        <div class="card-content">
+          <h3>Premium Black Kurta</h3>
+          <p>Elegant traditional wear</p>
+          <div class="price">₹1,499</div>
+          <button class="buy-btn" onclick="buyNow('Premium Black Kurta')">View Design</button>
+        </div>
+      </div>
+
+      <div class="card" data-category="shirt">
+        <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500" alt="Stylish shirt">
+        <div class="card-content">
+          <h3>Classic White Shirt</h3>
+          <p>Smart casual collection</p>
+          <div class="price">₹999</div>
+          <button class="buy-btn" onclick="buyNow('Classic White Shirt')">View Design</button>
+        </div>
+      </div>
+
+      <div class="card" data-category="formal">
+        <img src="https://images.unsplash.com/photo-1598808503746-f34c53b9323e?w=500" alt="Formal outfit">
+        <div class="card-content">
+          <h3>Modern Formal Suit</h3>
+          <p>Perfect for special occasions</p>
+          <div class="price">₹2,999</div>
+          <button class="buy-btn" onclick="buyNow('Modern Formal Suit')">View Design</button>
+        </div>
+      </div>
+
+      <div class="card" data-category="kurta">
+        <img src="https://images.unsplash.com/photo-1627225924765-552d49cf47ad?w=500" alt="Indo western outfit">
+        <div class="card-content">
+          <h3>Designer Indo-Western</h3>
+          <p>Festive fashion collection</p>
+          <div class="price">₹2,499</div>
+          <button class="buy-btn" onclick="buyNow('Designer Indo-Western')">View Design</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    © 2026 StyleHub • Fashion for Everyone
+  </footer>
+
+  <script>
+    function showMessage() {
+      alert("Welcome to StyleHub! Explore our latest collection.");
+    }
+
+    function buyNow(productName) {
+      alert("You selected: " + productName);
+    }
+
+    function filterProducts(category, button) {
+      const cards = document.querySelectorAll(".card");
+      const buttons = document.querySelectorAll(".categories button");
+
+      buttons.forEach(btn => btn.classList.remove("active"));
+      button.classList.add("active");
+
+      cards.forEach(card => {
+        if (category === "all" || card.dataset.category === category) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
